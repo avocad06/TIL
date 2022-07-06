@@ -2,7 +2,7 @@
 
 1. 오른쪽 상단 `+` 토글 클릭
 
-![image-20220706171112819](GitHub에서 원격 저장소 만들기.assets/image-20220706171112819.png)
+![image-20220707041913345](GitHub에서 원격 저장소 만들기.assets/image-20220707041913345.png)
 
 2. New Repositiory
 
