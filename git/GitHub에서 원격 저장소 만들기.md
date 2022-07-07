@@ -2,7 +2,7 @@
 
 1. 오른쪽 상단 `+` 토글 클릭
 
-![캡처](GitHub에서 원격 저장소 만들기.assets/캡처-16571362355881.png)
+![캡처](GitHub에서 원격 저장소 만들기.assets/캡처.png)
 
 2. New Repositiory
 
