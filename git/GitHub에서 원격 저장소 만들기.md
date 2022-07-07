@@ -2,7 +2,7 @@
 
 1. 오른쪽 상단 `+` 토글 클릭
 
-![캡처](GitHub에서 원격 저장소 만들기.assets/캡처.png)
+[](https://github.com/avocad06/TIL/blob/master/git/GitHub%EC%97%90%EC%84%9C%20%EC%9B%90%EA%B2%A9%20%EC%A0%80%EC%9E%A5%EC%86%8C%20%EB%A7%8C%EB%93%A4%EA%B8%B0.assets/%EC%BA%A1%EC%B2%98.png?raw=true)
 
 2. New Repositiory
 
