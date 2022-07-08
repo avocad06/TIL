@@ -27,7 +27,7 @@ Changes to be committed:
 
 2. modified.txt를 수정 후 git status 확인 Staging Area에 있는 파일 2개
 
-![modified](modified 와 $ git restore 이해.assets/modified.PNG)
+<img src="https://user-images.githubusercontent.com/108647806/178027177-c4ecb6ee-cba0-4a7a-963b-d259949400a8.PNG)" />
 
 ```bash
 $ git status
@@ -46,7 +46,7 @@ Changes not staged for commit:
 
 3. modified.txt를 처음 상태로 수정 후 git status 확인 = 1번 상태와 동일하게 Staging Area에 있는 파일은 1개 = <u>**수정되지 않았다고 보는 것**</u>
 
-   ![again](modified 와 $ git restore 이해.assets/again.PNG)
+3. <img src="https://user-images.githubusercontent.com/108647806/178027493-eef83dbb-3b77-4489-84ae-431c0d3e9f04.PNG)" />
 
    ```bash
    $ git status
