@@ -27,7 +27,7 @@ Changes to be committed:
 
 2. modified.txt를 수정 후 git status 확인 Staging Area에 있는 파일 2개
 
-![수정](modified 와 $ git restore 이해.assets/수정.PNG)
+![modified](modified 와 $ git restore 이해.assets/modified.PNG)
 
 ```bash
 $ git status
@@ -46,7 +46,7 @@ Changes not staged for commit:
 
 3. modified.txt를 처음 상태로 수정 후 git status 확인 = 1번 상태와 동일하게 Staging Area에 있는 파일은 1개 = <u>**수정되지 않았다고 보는 것**</u>
 
-   ![다시](modified 와 $ git restore 이해.assets/다시.PNG)
+   ![again](modified 와 $ git restore 이해.assets/again.PNG)
 
    ```bash
    $ git status
@@ -73,6 +73,7 @@ Changes not staged for commit:
 
 
 💡 즉, **git**은 가장 최근 저장 유무에 따른 변화를 감지하는 게 아니라, 해당 파일의 <u>상태 자체를 기준으로</u> 변화를 추적함을 알 수 있음.
+파일명의 변경은 Untracked Files로 봄.
 
 
 
