@@ -4,7 +4,7 @@
 # 와 같은 계산이 가능하다.
 # 참 또는 거짓의 논리값을 역(반대)으로 바꾸기 위해서 
 # not 예약어(reserved word, keyword)를 사용할 수 있다.
-# bool 값을 다뤄주는 예약어로는 not, and, or이 있다.
+# bool 값을 다뤄주는 예약어로는 not, and, or 이 있다.
 # 연산결과 역시 True 또는 False의 값으로 계산된다.
 
 b = bool(int(input()))
