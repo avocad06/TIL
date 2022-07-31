@@ -73,6 +73,14 @@ print(word.replace('hacking',''))
 ```
 
 ```python
+# replace는 기존의 모든 문자를 한 번에 모든 문자를 바꿔버린다.
+
+word = 'aaacbd'
+word = word.replace('a', 'b')
+print(word) # bbbcbd
+```
+
+```python
 # .join()은 순회 가능한 원소 사이에 특정 문자를 추가한다.
 
 word = ['edu', 'hphk.kr']
