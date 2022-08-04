@@ -30,6 +30,8 @@ matrix = [
 
   **하지만, 인덱스로 접근하여 순회하는 법을 알아야 하는 이유?**
 
+  
+
 - 👉 열 우선 순회
 
   리스트를 건너뛰어가면서 순회
@@ -42,15 +44,44 @@ matrix = [
 
   **다른 방식으로 순회하는 것도 있나 ?**
 
+  
+
+- 이차원리스트 순회 연습
+
+  ```python
+  from pprint import pprint 
+  
+  fa = [list(map(int, input().split())) for i in range(2)]
+  sa = [list(map(int, input().split())) for i in range(2)]
+  
+  # new_list = [] # 비워 놓으면 안됨.
+  new_list = [[0] * len(fa[0]) for i in range(2)]
+  for row in range(len(fa)):
+      for line in range(len(fa[0])):
+          new_list[row][line] = (fa[row][line] * sa[row][line])
+  
+  for row in range(len(new_list)):
+      for line in range(len(new_list[0])):
+          print(new_list[row][line], end=" ")
+      print()
+  ```
+
+  
+
 ## 전치
 
 > 행렬의 행과 열을 서로 맞바꾸는 것을 의미한다.
 
-열 우선 순회의 출력값은 기본적으로 전치 행렬
+열 우선 순회의 출력값은 기본적으로 행 우선 순회와 전치 행렬 관계이다.
+
+행 우선 순회는 리스트를 순회하는 기존 반복문으로도 가능하다. 표현하는 인덱스가 같기 때문이다.
+
+열 우선 순회는 기본적인 리스트 순회의 인덱스와 전치 행렬 관계이기 때문에,
+
+행 우선 순회 역시 열 우선 순회와 전치 행렬의 관계가 성립한다.
 
 행과 열의 반복횟수를 바꿔서 
 
 
 
 ## 회전
-
