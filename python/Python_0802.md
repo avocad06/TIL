@@ -62,6 +62,14 @@
 
   <u>Minheap(최소 힙)으로 구현되어 있음(가장 작은 값이 먼저 옴)</u>
 
+  `heappop(heap)`기준은 여러 개로도 구현이 가능하다.
+
+  ```python
+  heapq.heqppop(abS(number), number)
+  # 절댓값이 최우선순위, 실제 값이 우선순위
+  # BOJ 11286
+  ```
+
   **연산의 속도가 리스트보다 빠르다.**
 
   언제나 가장 작은 값/큰 값을 뽑아나갈 수 있도록(한 놈만 노린다)
@@ -70,39 +78,54 @@
 
 - 힙과 리스트 비교
 
-  | 연산 종류            | 힙(Heap) | 리스트(List)                  |
-  | -------------------- | -------- | ----------------------------- |
-  | 값 반환(Get Item)    | O(1)     | O(1)                          |
-  | 값 삽입(Get Insert)  | O(logN)  | O(1) <append> / O(N) <insert> |
-  | 값 삭제(Delete Item) | O(logN)  | O(1) <append> / O(N) <insert> |
-  | 값 탐색(Search Item) | O(N)     | O(N)                          |
+  | 연산 종류            | ✔힙(Heap)✔ | 리스트(List)                  |
+  | -------------------- | ---------- | ----------------------------- |
+  | 값 반환(Get Item)    | O(1)       | O(1)                          |
+  | 값 삽입(Get Insert)  | O(logN)    | O(1) <append> / O(N) <insert> |
+  | 값 삭제(Delete Item) | O(logN)    | O(1) <append> / O(N) <insert> |
+  | 값 탐색(Search Item) | O(N)       | O(N)                          |
   
   
 
 ## Heap 구현
-- 간단한 사용법 (Python Tutor)
+- 간단한 사용법 (**Python Tutor**)
   ```python
   import heapq # heapq 모듈 소환
   
   numbers = [5, 3, 2, 4, 1]
   
-  heapq.heqpify(numbers)
+  heapq.heqpify(numbers) # numbers를 heap으로 형 변환
+  
   # numbers 자체를 바꾸기 때문에 반환값이 없다.(원본 훼손하는 메소드)
   # result = heapq.heapify(numbers)
-  # print(result) # None 반환값이 없다.
+  print(result) # None 반환값이 없다.
   print(numbers)
   ==================================
-  heapq.heappop(numbers)
+  heapq.heappop(numbers) <Python Tutor>
   
-  print(numbers)
+  
   # 팝핑되자마자 다시 정렬됨.
   # 최소값은 맨 앞으로, 나머지 요소들은 나름의 규칙(랜덤은 아님)을 적용해서 정렬.
   ===================================
+  import heapq # heapq 모듈 소환
+  
+  numbers = [3, 5, 2, 4, 1, 5]
+  
+  print(heapq.heappop(numbers))
+  # 3
+  # heap 형 변환을 하지않았기 때문에 그냥 맨 앞에 있는 값을 가져옴.
+  
   heapq.heappush(numbers, 10)
+  print(numbers)
+  print(heapq.heappop(numbers))
+  # [2, 5, 5, 4, 1, 10] # 내부 정렬이 일어나긴 함.
+  # 2
+  # 그냥 맨 앞 값을 가져옴.
   
   heapq.heappush(numbers, 0)
-  
   print(numbers)
+  # [0, 5, 2, 4, 1, 10, 5]
+  # heappush가 되면서 자동으로 정렬
   
   ======================================
   import heapq
@@ -111,8 +134,8 @@
   
   heap = []
   # heapq.heapify(heap) 를 안 해도 됩니다.
-  # heapq.heqppush 시점에 자동으로 연산됨.
-  # heapq.heappop(numbers) 시점에서는 자동연산 되지 않음.
+  # heapq.heqppush 시점에 자동으로 정렬됨.
+  # heapq.heappop(heap) 시점에서도 자동 정렬 될까?
   
   for number in numbers:
       if number != 0:
@@ -143,18 +166,45 @@
 
 > 파이썬 내장 데이터 구조, '집합'을 나타내는 데이터 구조
 
-- 셋의 연산
 
- |      |      |
-  | ---- | ---- |
-  |      |      |
-  |      |      |
-  |      |      |
-  |      |      |
-  |      |      |
 
-- Set은 언제 사용할까?
-  1. 데이터의 중복이 없어야 할 때(고유값들로 이루어진 데이터가 필요할 때)
-  2. **정수가 아닌 데이터**의 삽입/삭제/탐색이 빈번히 필요할 때
+## Set 연산
 
-- 탐색/제거의 시간복잡도가 굉장히 낮다. 빠르다.
+| 값 추가    | `.add()`    |
+| ---------- | ----------- |
+| 값 삭제    | `.remove()` |
+| 셋과의 합  | `|`         |
+| 셋과의 차  | `-`         |
+| 교집합     | `&`         |
+| 대칭차집합 | `^`         |
+
+
+
+## Set의 Use Case
+
+  > 1. 데이터의 **중복이 없어야 할 때**(고유값들로 이루어진 데이터가 필요할 때)
+  > 2. **정수가 아닌 데이터**의 삽입/삭제/탐색이 빈번히 필요할 때
+
+- 셋(`Set`) 연산의 시간 복잡도
+
+  | 연산 종류   | 시간복잡도 |
+  | ----------- | ---------- |
+  | 탐색        | O(1)       |
+  | 제거        | O(1)       |
+  | 합집합      | O(N)       |
+  | 교집합      | O(N)       |
+  | 차집합      | O(N)       |
+  | 대칭 차집합 | O(N)       |
+
+​	✔ **탐색과 제거의 시간복잡도가 굉장히 낮다. 빠르다.** ✔ = 중복 없애기 쉽다.
+
+```python
+a = [1, 2, 3, 5]
+b = [1, 7, 8, 9]
+a, b = set(a), set(b)
+print(a|b - b)
+# {1, 2, 3, 5}
+```
+
+
+
