@@ -158,7 +158,9 @@
 
      상위 코드에서 `heapify()`로 **변환하지 않아도 최소 힙으로 정렬**하며 `인자`를 추가
 
-3.  `heapq.heappop(heap)` : 힙에서 **최소값을** <u>반환하는 메소드</u>(반환값이 o)
+3. `heapq.heappop(heap)` : 힙에서 **최소값을** <u>반환하는 메소드</u>(반환값이 o)
+
+4. [최대 힙은 각 값에 -1을 곱해 사용한다](https://www.geeksforgeeks.org/max-heap-in-python/_)
 
 
 
