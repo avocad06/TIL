@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <style>
+      .card-img-top {
+        height: 30rem;
+        object-fit: fill;
+      }
+
+    </style>
+</head>
+
+<body>
+  <!-- 네브바 -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #003049;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="./image/logo.png" alt="Logo" width="100" height="60" class="d-inline-block align-text-top">
+      </a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav align-items-center fs-5">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./02_home.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./03_community.html">Coumunity</a>
+          </li>
+          <li class="nav-item">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-link text-decoration-none nav-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              Login
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+              aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="staticBackdropLabel">Please Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                      </div>
+                      <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- banner -->
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner py-5 bg-dark">
+      <!-- 캐러셀1 -->
+      <div class="carousel-item active d-flex justify-content-center">
+        <div class="card-group w-50">
+          <!-- 빨간머리 앤 -->
+          <div class="card h-100">
+            <img src="./image/anne캐러셀.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">빨간 머리 앤</h5>
+              <p class="card-text">2022. 07. </p>
+            </div>
+            <div class="m-2 fw-bold d-grid">
+              <button type="button" class="btn btn-outline-warning">About</button>
+            </div>
+          </div>
+          <!-- 마미 -->
+          <div class="card h-100">
+            <img src="./image/mommy캐러셀.jpeg" class="card-img-top" "alt="...">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">마미</h5>
+              <p class="card-text">2014. 12. 18</p>
+            </div>
+            <div class="m-2 fw-bold d-grid">
+              <button type="button" class="btn btn-outline-warning">About</button>
+            </div>
+          </div>
+          <div class="card h-100">
+            <img src="./image/decisiontoleave캐러셀.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">헤어질 결심</h5>
+              <p class="card-text">2022. 06. </p>
+            </div>
+            <!-- card footer -->
+            <div class="m-2 fw-bold d-grid">
+              <button type="button" class="btn btn-outline-warning">About</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 캐러셀2 -->
+      <div class="carousel-item active d-flex justify-content-center">
+        <div class="card-group w-50">
+          <!-- 기생충 -->
+          <div class="card h-100">
+            <img src="./image/parasite캐러셀.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">기생충</h5>
+              <p class="card-text">2022. 07. </p>
+            </div>
+            <div class="m-2 fw-bold d-grid">
+              <button type="button" class="btn btn-outline-warning">About</button>
+            </div>
+          </div>
+          <!-- 놉 -->
+          <div class="card h-100">
+            <img src="./image/nope캐러셀.jpeg" class="card-img-top" "alt="...">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">놉</h5>
+              <p class="card-text">2022. 07. 20</p>
+            </div>
+            <div class="m-2 fw-bold d-grid">
+              <button type="button" class="btn btn-outline-warning">About</button>
+            </div>
+          </div>
+          <!-- her -->
+          <div class="card h-100">
+            <img src="./image/movie5캐러셀.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">her</h5>
+              <p class="card-text">2019. 05. 29</p>
+            </div>
+            <!-- card footer -->
+            <div class="m-2 fw-bold d-grid">
+              <button type="button" class="btn btn-outline-warning">About</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 캐러셀3 -->
+      <div class="carousel-item">
+        <img src="..." class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <footer class="position-fixed bottom-0 w-100 text-center text-white-50 py-3 fs-5 fw-light" style="background-color: #003049;">
+    0913-Project 1030
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
