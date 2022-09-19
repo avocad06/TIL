@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @keyframes floating {
+      from {
+        margin-top: 12%;
+        opacity: 0;
+      }
+      
+      to {
+        margin-bottom: 0%;
+        opacity: 1;
+      }}
+      
+      
+      .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      width: 100vw;
+      height: 100vh;
+      color: white;
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .active {
+      display: flex;
+    }
+    
+    .modal-box {
+      position: relative;
+      width: 30rem;
+      height: 20rem;
+      background-color: rgb(238, 242, 245);
+      border-radius: 1rem;
+      text-align: center;
+      animation-duration: 1s;
+      animation-name: floating;
+      box-shadow: 10px 5px 5px rgb(8, 5, 2);
+      font-size: 12rem;
+    }
+
+    .close-btn {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      width: 15%;
+      background-color:rgba(254, 86, 64);
+      color: white;
+      padding: .5rem;
+      font-weight: bold;
+      border-radius: 2rem;
+    }
+  
+  </style>
+</head>
+<body>
+  <button id="modal-btn" style="text-align: center;">눌러보세요</button>
+  <div id="modal-content" class="modal-overlay">
+    <div class="modal-box">나가
+      <button id="modal-cancel-btn" class="close-btn">나가기</button>
+    </div>
+
+  </div>
+  <script src="./modal.js" defer></script>
+</body>
+</html>
