@@ -16,19 +16,12 @@
     <h1><a href="https://github.com/avocad06">Avocad06's Github</a></h1>
 </div>
 
+{% for post in posts %}
 <div>
-    <p>2022.10.01, 15:19에 작성하였습니다.</p>
-    <h2><a href="">My first post</a></h2>
-    <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida
-        at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-        sit amet risus.</p>
+    <p>작성일: {{ post.published_date }}</p>
+    <h1><a href="">{{ post.title }}</a></h1>
+    <p>{{ post.text|linebreaksbr }}</p>
 </div>
-
-<div>
-    <p>2022.10.01, 15:20에 작성하였습니다.</p>
-    <h2><a href="">My second post</a></h2>
-    <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida
-        at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-</div>
+{% endfor %}
 
 </html>

@@ -13,19 +13,17 @@ class Post(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateField(blank=True, null=True)
 
+    # 메소드를 정의?
+    # self의 의미가 뭐지? 호출되면 자기자신을 인자로 넣는다였던 거같은데
+    def published(self):
+        self.published_date = timezone.now()
+        self.save()
 
-# 메소드를 정의?
-# self의 의미가 뭐지? 호출되면 가장 첫 번째를 인자로 넣는다였던 거같은데
-def published(self):
-    self.pubtlished_date = timezone.now()
-    self.save()
+    # 왜 타임존에서 할까? published_date에 바로 timezone.now()하면 안되는 건가?
+    # 객체로 접근해서 값 수정이 가능해짐
 
-
-# 왜 타임존에서 할까? published_date에 바로 timezone.now()하면 안되는 건가?
-
-
-# 언더바 두 개는 무슨 뜻일까?
-# 던더, 더블, 언더스코어의 준말
-# __str__을 호출하면 Post모델의 제목 텍스트를 반환
-def __str__(self):
-    return self.title
+    # 언더바 두 개는 무슨 뜻일까?
+    # 던더, 더블, 언더스코어의 준말
+    # __str__을 호출하면 Post모델의 제목 텍스트를 반환
+    def __str__(self):
+        return self.title
