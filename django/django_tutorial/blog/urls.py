@@ -7,5 +7,7 @@ urlpatterns = [
     # url name sapcing 으로 뷰를 식별(url에 이름붙이기)
     # 어떤 앱이든 하나라도 view가 설정되지 않으면 다른 웹페이지도 다 실행이 안 된다.
     path("", views.post_list, name="post_list"),
-    path("post/<int:pk>/", views.post_detail, name='post_detail'),
+    path("post/<int:pk>/", views.post_detail, name="post_detail"),
+    path("post/new", views.post_new, name="post_new"),
+    path("post/<int:pk>/edit/", views.post_edit, name='post_edit'),
 ]

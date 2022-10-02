@@ -7,6 +7,9 @@
         {{ post.published_date }}
     </div>
     {% endif %}
+    {% if user.is_authenticated %}
+    <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-default"><i class="bi bi-pencil-fill">수정하기</i></a>
+    {% endif %}
     <!-- 제목과 내용 -->
     <h1>{{ post.title }}</h1>
     <p>{{ post.text|linebreaksbr }}</p>
