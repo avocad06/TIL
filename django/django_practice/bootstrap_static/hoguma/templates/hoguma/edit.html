@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block content %}
+<div class="container mt-3">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <footer class="row">
+            <div class="col text-center d-flex justify-content-center">
+                <input type="submit" class="btn btn-outline-dark" value="저장하기">
+            </div>
+        </footer>
+    </form>
+</div>
+
+{% endblock %}

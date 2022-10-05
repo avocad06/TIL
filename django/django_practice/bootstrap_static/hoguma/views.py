@@ -29,3 +29,37 @@ def create(request):
         # 유효하지 않다면?
         # 모달에서 처리할 때는 유효하지 않을 때 유효성 메시지를 띄워주고
         # 아무런 페이지 처리가 일어나지 않는다.
+
+
+def detail(request, pk):
+    details = Hoguma.objects.get(pk=pk)
+    form = HogumaForm(instance=details)
+    form.fields["title"].disabled = True
+    form.fields["content"].disabled = True
+    context = {
+        "article": details,
+        "form": form,
+    }
+    return render(request, "hoguma/detail.html", context)
+
+
+def edit(request, pk):
+    content = Hoguma.objects.get(pk=pk)
+    if request.method == "POST":
+        form = HogumaForm(request.POST, instance=content)
+        if form.is_valid():
+            form.save()
+            return redirect("hoguma:detail", pk)
+    else:
+        form = HogumaForm(instance=content)
+    context = {
+        "form": form,
+        "article": content,
+    }
+    return render(request, "hoguma/edit.html", context)
+
+
+def delete(request, pk):
+    content = Hoguma.objects.get(pk=pk)
+    content.delete()
+    return redirect("hoguma:index")

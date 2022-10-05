@@ -1,4 +1,43 @@
 img {
     height: 8rem;
     padding: 0px 3px;
+
+}
+
+.ani1 {
+    animation-duration: 3s;
+    animation-name: slidein1;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.ani2 {
+    animation-duration: 3s;
+    animation-name: slidein2;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes slidein1 {
+    from {
+        margin-left: 100%;
+        width: 300%
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+@keyframes slidein2 {
+    from {
+        margin-right: 0%;
+        width: 300%
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
 }

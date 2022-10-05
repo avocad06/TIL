@@ -4,7 +4,9 @@
 {% block content %}
 <!-- 게시판 이름 -->
 <header class="d-flex justify-content-center mt-3">
-    <img src="{% static 'hoguma/images/hyemee.png' %}" alt="">
+    <div class="ani1">
+        <img src="{% static 'hoguma/images/hyemee.png' %}" alt="">
+    </div>
     <h1 class="display-6 m-2 fw-bold text-center lh-base p-2">
         <span class="text-danger display-5 fw-bold">호구마</span>요?<br>호박고구마요 어머니
         <!-- Button trigger modal -->
@@ -12,7 +14,9 @@
             글 쓰셔야죠 어머니
         </button>
     </h1>
-    <img src="{% static 'hoguma/images/munhee.png' %}" alt="">
+    <div class="ani2">
+        <img src="{% static 'hoguma/images/munhee.png' %}" alt="">
+    </div>
 </header>
 
 
@@ -31,7 +35,7 @@
                     {% bootstrap_form form %}
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <input type="submit" class="btn btn-primary" value="호구머니나">
+                        <input type="submit" class="btn btn-outline-danger" value="호구머니나">
                 </form>
             </div>
         </div>
@@ -39,23 +43,49 @@
 </div>
 </div>
 <!-- 글 목록 -->
-<table class="table table-striped w-100 mx-auto container">
+<table class="table table-striped w-100 mx-auto container table-hover">
     <thead>
-        <tr class="row">
-            <th scope="col" class="col-2"></th>
+        <tr class="row bg-dark text-white">
+            <th scope="col" class="col-2">&nbsp;번호</th>
             <th scope="col" class="col text-center">제목</th>
-            <th scope="col" class="col-3"></th>
+            <th scope="col" class="col-3 text-center">작성일</th>
         </tr>
     </thead>
     <tbody>
         {% for article in articles %}
         <tr class="row">
-            <th scope="row" class="col-2">{{ article.pk }}</th>
-            <td class="col text-start">{{ article.title }}</td>
+            <th scope="row" class="col-2 text-start">&nbsp;&nbsp;&nbsp;{{ article.pk }}</th>
+            <td class="col text-start">
+                <a class="text-decoration-none text-black boards" data-bs-toggle="collapse"
+                    href="#collapse{{ article.pk }}" role="button" aria-expanded="false"
+                    aria-controls="collapseExample">
+                    {{ article.title }}
+                </a>
+                </p>
+                <div class="collapse position-relative" id="collapse{{ article.pk }}">
+                    <div class="card card-body p-3">
+                        {{ article.content }}
+                        <div class="position-absolute bottom-0 end-0 m-1 text-secondary" style="font-size: .5rem;">
+                            {{ article.updated_at }}
+                        </div>
+                        <div>
+                            <a href="{% url 'hoguma:edit' article.pk %}">
+                                <button class="btn btn-outline-light position-absolute top-0 end-0 mx-5">
+                                    <i class="bi bi-pencil-square text-muted align-top" style="font-size: .8rem"></i>
+                                </button>
+                            </a>
+                            <a href="{% url 'hoguma:delete' article.pk %}">
+                                <button class="btn btn-outline-light position-absolute top-0 end-0 mx-1 align-top"
+                                    style="font-size: .8rem;">
+                                    <i class="bi bi-trash3 text-muted"></i>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+            </td>
             <td class="col-3">{{ article.created_at }}</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-
 {% endblock %}

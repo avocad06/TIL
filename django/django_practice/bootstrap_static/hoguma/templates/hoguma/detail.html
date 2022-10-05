@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block content %}
+<div class="container mt-3">
+    {% bootstrap_form form %}
+</div>
+<footer class="row">
+    <div class="col text-center d-flex justify-content-center">
+        <a href="{% url 'hoguma:edit' article.pk %}" class="text-end">
+            <button class="btn btn-outline-primary">
+                수정하기
+            </button>
+        </a>
+        <a href="{% url 'hoguma:delete' article.pk %}" class="text-start">
+            <button class="btn btn-danger">
+                삭제하기
+            </button>
+        </a>
+    </div>
+</footer>
+{% endblock %}
