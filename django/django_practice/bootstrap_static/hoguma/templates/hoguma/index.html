@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% block content %}
+<!-- 게시판 이름 -->
+<header class="d-flex justify-content-center mt-3">
+    <img src="{% static 'hoguma/images/hyemee.png' %}" alt="">
+    <h1 class="display-6 m-2 fw-bold text-center lh-base p-2">
+        <span class="text-danger display-5 fw-bold">호구마</span>요?<br>호박고구마요 어머니
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#create">
+            글 쓰셔야죠 어머니
+        </button>
+    </h1>
+    <img src="{% static 'hoguma/images/munhee.png' %}" alt="">
+</header>
+
+
+<!-- Modal -->
+<div class="modal fade" id="create" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'hoguma:create' %}" method="POST">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="호구머니나">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- 글 목록 -->
+<table class="table table-striped w-100 mx-auto container">
+    <thead>
+        <tr class="row">
+            <th scope="col" class="col-2"></th>
+            <th scope="col" class="col text-center">제목</th>
+            <th scope="col" class="col-3"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for article in articles %}
+        <tr class="row">
+            <th scope="row" class="col-2">{{ article.pk }}</th>
+            <td class="col text-start">{{ article.title }}</td>
+            <td class="col-3">{{ article.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
