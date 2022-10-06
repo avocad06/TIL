@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block content %}
+  <h1>새 글 작성 페이지입니다.</h1>
+  <div class="container">
+    <form action="" method="POST">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <footer class="d-flex justify-content-center">
+        <input class="btn btn-outline-primary" type="submit" value="commit!">
+      </footer>
+    </form>
+  </div>
+{% endblock %}

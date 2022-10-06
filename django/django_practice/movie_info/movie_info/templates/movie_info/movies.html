@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block content %}
+  <h1>목록 페이지입니다.</h1>
+  <a href="{% url 'movies:create' %}">
+    새글 쓰러 가기
+  </a>
+  {% for title in titles %}
+    <p class="mt-3">
+      <a href="{% url 'movies:content' title.pk %}" class="text-decoration-none text-dark">
+        {{ title.title }}
+      </a>
+    </p>
+  {% endfor %}
+{% endblock %}
