@@ -204,3 +204,34 @@ ModelForm은 모델에 정의된 필드대로 UI를 그려주고, 유효성 검�
 요청에 따라 다른 일을 하게 하면서 같은 VIEW함수에서 (동일한 URL에서) 처리가 가능해진다.
 
 POST요청이 왔지만 FORM으로 돌아가게 하기 위해서 메소드의 분리와 뷰함수의 일원화
+
+
+
+# 들여쓰기의 중요성
+
+```python
+def create(request):
+    if request.method == "GET":
+        article_form = ArticleForms()
+        context = {"form": article_form}
+
+    elif request.method == "POST":
+        # title = request.POST.get("title")
+        # Article.objects.create(title=title)
+        article_form = ArticleForms(request.POST)
+        if article_form.is_valid():
+            article_form.save()
+            return redirect("normal:index")
+
+    return render(request, "normal/create.html", context)
+```
+
+request가 POST요청으로 들어오면 모델폼에 매개변수로 request.POST값을 전달한다.
+
+브라우저에서 입력된 POST값이 모델폼에 유효한 경우 폼 내용을 DB에 반영한다.(`article_form.save()`)
+
+DB에 반영이 성공적으로 되었으면 index 페이지로 돌아간다.(`normal:index`)
+
+request가 POST 요청이 아니라면 브라우저가 요청한 form을 보여준다.(`article_form = ArticleFroms()` 이후 context 값으로 보내주기)
+
+여기서 들여쓰기가 중요한데, `context = {"form" : article_form}` 은 1. request가 GET이거나, 2. request가 POST이지만 모델폼에 유효하지 않은 경우 둘 다를 처리해야 한다.

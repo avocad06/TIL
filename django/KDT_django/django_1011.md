@@ -122,6 +122,8 @@ django.contrib이 의미하는 것은 무엇일까?
 
    1. `UserCreationForm`을 상속받아서,(속성과 메소드를 재사용)
 
+      - 메소드 오버라이딩 : 원래 기능을 유지하면서 <u>새로운 기능을 덧붙일 때</u> 사용
+
    2. 그 폼안의 모델 정보를(`class Meta:`) accounts의 model `User`로 바꿔준다.
 
       ````python
@@ -138,6 +140,7 @@ django.contrib이 의미하는 것은 무엇일까?
       ```
 
 8. 상속받은 모델 폼을 views.py 에 적용하기
+
 9. Substituting a custom User model(django docs)
 
 ​	Referencing th User model

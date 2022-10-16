@@ -47,17 +47,15 @@ views와 template을 왔다리갔다리하며 수정
        return render(request, "silver/detail.html")
    ```
 
-​		`detail` 함수는 `silver/detail.html` 을 rendering 해수는 함수
-
-​		함수를 설정했으니 `detail.html`로 간다
+​	`details` 함수는 `silver/detail.html` 을 rendering 해주는 함수<br>	함수를 설정했으니 `detail.html`로 간다
 
 
 
-​	2-1. 글의 내용을 보여줘야 하므로 더미 데이터(dummy data)로 template에 하나 만들어서 `details`가 `detail.html`을 제대로 응답하고 있는지 확인
+2-1. 글의 내용을 보여줘야 하므로 더미 데이터(dummy data)로 template에 하나 만들어서 `details`가 `detail.html`을 제대로 응답하고 있는지 확인
 
 
 
-​	3. detail.html : `base.html`을 상속받기 위해 `{% extends 'base.html' %}`을 최상단
+3. detail.html : `base.html`을 상속받기 위해 `{% extends 'base.html' %}`을 최상단
 
 ```python
 {% extends 'base.html' %}
@@ -74,7 +72,7 @@ p 골라주세요.
 
 - `base.html` : 프로젝트와 같은 레벨의 경로에 templates 폴더 생성
 
-  `BASE_DIR / 'templates'`
+  `settings` > `BASE_DIR / 'templates'`
 
 
 
@@ -107,7 +105,7 @@ p 골라주세요.
 ```
 
 ```python
-def detail(request, pk):
+def details(request, pk):
 ```
 
 ```python
@@ -125,7 +123,7 @@ def detail(request, pk):
 
 - `.get()`메소드를 사용해서 특정 pk의 데이터를 불러온다
 
-​	불러온 데이터를 변수에 할당(`{{ todo.title }}`, `{{ todo.content }}`)
+	불러온 데이터를 변수에 할당(`{{ todo.title }}`, `{{ todo.content }}`)
 
 - pk를 어떻게 받아올 것인가?
 
@@ -139,7 +137,7 @@ def detail(request, pk):
 
 
 
-첫 번째 READ는 데이터의 목록을 출력하고,
+첫 번째 READ는 데이터의 목록을 출력하고(`index.html`),
 
 두 번째 READ는 하나의 데이터에 대한 정보를 출력
 
@@ -154,110 +152,3 @@ def detail(request, pk):
   그 다음엔 **url**을 만들고 <br>**view** 만들고 **templates** 만들기
 
   pk값을 이동시키면서(동적인자) 원하는 데이터를 view에서 가져오고 가져온 데이터를 templates에 출력하기
-
-
-
-# update
-
-사용자가 글을 수정하려면, 수정 페이지가 따로 존재해야 한다
-
-수정을 하고 수정 버튼을 누르면 변경사항을 반영할 view가 필요하다
-
-- 사용자의 입력을 받을
-
-
-
-1. path 설정
-
-   path("edit", views.edit, name="edit")
-
-
-
-2. edit 함수설정
-
-   def edit(request):
-
-   return render(request, 'posts/edit.html')
-
-
-
-3. edit에 대한 templates 작성
-
-   new.html과 똑같이 가져와서
-
-   h1 수정페이지
-
-   form 
-
-   기존의 데이터를 불러오기 위해 pk값을 동적 인자로 받는다.
-
-   index.html 에서 {% url 'posts:edit' pk_%}
-
-   
-
-4. def edit(request, pk_):
-
-   post = Post.object.get(pk=pk_)
-
-   context = {"post" = post}
-
-
-
-5. edit.html에서 
-
-   input의 value에 
-
-   views에서 넘겨온 {{ post.title }}과 {{ post.content }}를 각각 뿌려주기
-
-   * textarea = > 큰 input (보통 글 작성할 때는 textarea 사용) textarea 태그는 value속성이 없으므로 태그 내부 값으로 작성해야 한다.
-
-
-
-6. edit.html에서
-
-   특정 pk를 가진 데이터를 불러오기 위해 pk를 동적 인자로 전달
-
-   {% url 'posts:update' post.pk %}
-
-   
-
-7. url에서 path 추가
-
-   path(`'update/<int:pk_>`, view.update, name='update'),
-
-   
-
-8. def update(request, pk_) url의 동적인자와 views에서 받는 인자가 동일
-
-   update할 특정 데이터를 불러온다 = > pk_를 사용해서
-
-   post_ = Post.objects.get(pk=pk_)
-
-   title_ = request.GET.get('title')
-
-   content = request.GET.get('content')
-
-   
-
-   데이터를 수정
-
-   post.title = title_
-
-   post.content = content_
-
-   생성이 아니기 때문에 save()를 해줘야 한다.
-
-   post.save()
-
-   데이터의 디테일 페이지로 리다이렉트
-
-   return redirect('post:details', post.pk) 내가 불러온 post의 pk를 인자로 추가
-
-특정 글의 detail을 불러오려면 pk가 필요하므로 => 방금 수정한 글의 detail을 확인하기 위해서
-
-
-
-업데이트는 read + create + 알파
-
-read = 수정페이지에 데이터를 출력
-
