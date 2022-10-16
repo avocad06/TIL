@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+
+  <div class="w-25">
+    <form action="" method="POST" class="fw-bold">
+      <div class="h4 pb-2 mb-4 text-black fw-bold border-bottom border-secondary">
+        로그인
+      </div>
+      {% csrf_token %}
+      {% bootstrap_form forms %}
+      <div class="text-end d-grid">
+        <input type="submit" class="btn btn-outline-black" value="로그인">
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

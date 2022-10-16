@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <div class="w-50 container border border-secondary rounded-3 p-5">
+    <div class="h4 pb-2 mb-4 text-black fw-bold border-bottom border-secondary">
+      함께 해 주세요
+    </div>
+    <form action="" method="POST" class="fw-bold">
+      {% csrf_token %}
+      {% bootstrap_form forms %}
+      <div class="text-end d-grid">
+        <input type="submit" class="btn btn-outline-primary" value="가입하기">
+      </div>
+    </form>
+  </div>
+{% endblock %}

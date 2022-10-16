@@ -1,0 +1,11 @@
+.nav {
+    background: rgb(238,174,202);
+    background: linear-gradient(90deg, rgba(238,174,202,0.6) 0%, rgba(148,187,233,0.6) 100%, rgba(0,212,255,0.6) 100%);
+}
+
+.aside-list:hover {
+    background: rgb(238,174,202);
+    background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%, rgba(0,212,255,1) 100%);
+    color : white;
+
+}

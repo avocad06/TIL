@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block aside %}
+{% endblock %}
+{% block content %}
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ info.username }}</h5>
+      <h6 class="card-subtitle mb-5 text-muted">가입일 |
+        {{ info.date_joined | date:"Y-n-j" }}
+      </h6>
+      <p class="card-text">{{ info.email }}</p>
+      {% if user.pk == info.pk %}
+        <a href="{% url 'accounts:update' %}" class="card-link">회원 정보 수정</a>
+        {% endif %}
+      </div>
+  </div>
+{% endblock %}

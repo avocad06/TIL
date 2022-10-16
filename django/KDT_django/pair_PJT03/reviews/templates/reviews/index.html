@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block aside %}
+  <div class="d-flex align-items-center fixed-bottom aside" style="width: 23%; padding: 2.5%; height: 20%; position: absolute; top: 20%; left:-10%;">
+    <aside class="card w-100">
+      <div class="card-header fw-bold">
+        ÜwithMe
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item aside-list">
+          <a href="{% url 'reviews:index' %}" class="nav-link">Review</a>
+        </li>
+        {% if user.is_authenticated %}
+          <li class="list-group-item aside-list">
+            <a href="{% url 'reviews:create' %}" class="nav-link">Post</a>
+          </li>
+        {% endif %}
+      </ul>
+    </aside>
+  </div>
+{% endblock %}
+{% block content %}
+  <p>
+    {% for review in reviews %}
+      <a href="{% url 'reviews:detail' review.pk %}" class="nav-link">
+        {{ review.title }}
+      </a>
+    {% endfor %}
+  </p>
+{% endblock %}

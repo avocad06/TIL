@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block aside %}{% endblock %}
+{% block content %}
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ review.title }}</h5>
+      <h6 class="card-subtitle mb-5 text-muted">작성일 |
+        {{ review.created_at }}
+      </h6>
+      <p class="card-text">{{ review.content }}</p>
+      <a href="{% url 'reviews:update' review.pk %}" class="btn btn-outline-warning">수정</a>
+      <a href="{% url 'reviews:delete' review.pk %}" class="btn btn-outline-danger">삭제</a>
+    </div>
+  </div>
+{% endblock %}
