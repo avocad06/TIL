@@ -2,6 +2,20 @@
 
 전달을 했으면 자식 컴포넌트에서 받아 써야 함.
 
+`App.js`
+
+App.js => 부모 컴포넌트
+
+Counter.js => 자식 컴포넌트
+
+App.js에 작성된 컴포넌트(자식 컴포넌트)에 값을 전달
+
+```react
+<Counter initialValue={5} />
+```
+
+
+
 ```react
 const Counter = (props) => {
     ...
@@ -105,5 +119,45 @@ props는 부모와 자식 컴포넌트에서만 성립하는 게 아닌가?
 
 근데 그러면 지금 최상위 태그가 없는 상태인데(`Container` 컴포넌트가 가장 바깥이니까)
 
+=> ❌. 잘못 이해했음. return 하는 html에서 부모 자식 관계가 성립하는 게 아니라 컴포넌트 기준으로 부모 자식인 것. `App.js` 컴포넌트가 return하는 html에 작성된 컴포넌트들이 자식 관계를 성립하게 되는 것. 즉, 부모 컴포넌트는 `App.js`인 것임.
 
+
+
+## useRef
+
+handleSubmit을 눌렀을 때 실행되는 함수를 작성
+
+함수는 작성자가 1글자 이상 입력되었는지, 내용이 5글자 이상 입력되었는지 확인하고,<br>요건을 충족하지 않으면 해당 컴포넌트에 focus를 주는 함수
+
+=> DOM에 어떻게 접근할까?
+
+
+
+어떤 dom element에 focus를 줘야 하는지 선택
+
+=> `useRef` from "react"
+
+
+
+`useRef()`를 호출하면 MutableRefObject가 반환
+
+=> dom 요소에 접근할 수 있도록 함.
+
+
+
+input태그에 `ref`속성을 줌
+
+```react
+ref = {authorInput}
+```
+
+useRef()가 반환하는 레퍼런스 객체의 current 프로퍼티는 현재 가리키는 값을 불러와서 사용할 수 있게 해준다.
+
+
+
+현재 가리키는 값 = input element
+
+```react
+console.log(authorInput) // {current: input}
+```
 
