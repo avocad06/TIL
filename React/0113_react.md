@@ -16,7 +16,7 @@ ex) Mount 시 초기화, Update시 예외 처리, UnMount시 메모리 정리 �
 
 리액트는 생애주기별 사용할 수 있는 메서드가 따로 존재한다.
 
-원래는 클래스형 컴포넌트에서만 사용할 수 있었지만, 리액트 훅으로 가능하다.
+원래는 클래스형 컴포넌트에서만 사용할 수 있었지만, 리액트 훅으로 가능해졌다.
 
 `React Hooks`
 
@@ -28,9 +28,11 @@ useState, useEffect, useRef . . .etc
 
 
 
-- `useEffect(Callback 함수, [의존성 배열])`
+```
+useEffect(Callback 함수, [의존성 배열])
+```
 
-  > 배열 내에 들어있는 값이 변화하면 콜백 함수가 수행된다.
+> 배열 내에 들어있는 값이 변화하면 콜백 함수가 수행된다.
 
 
 
@@ -67,16 +69,65 @@ useState, useEffect, useRef . . .etc
    > - 부모 컴포넌트로부터 전달받은 props가 변경되거나
 
    ```react
-   // 업데이트 시점을 제어하려면 매개변수에 배열(depth)을 전달하지 않으면 된다.
+   // 대상에 상관없이 업데이트 시점을 제어하려면 매개변수에 배열(depth)을 전달하지 않으면 된다.
    useEffect(()=>{
        console.log('Update!');
    });
    ```
 
-   - 컴포넌트가 업데이트 되는 만큼 Update 출력
+   - dependency array(depth)에 넣는 값에 따라 감지하고 싶은 대상만 감지할 수 있게 됨.(count만 update 될 때, text만 업데이트 될 때)
+
+     `count`
+
+     ```react
+     useEffect(() => {
+             console.log(`count is update:${count}`)
+         }, [count])
+     ```
+
+     `text`
+
+     ```react
+     useEffect(() => {
+             console.log(`text is update: ${text}`)
+         }, [text])
+     ```
+
+   - 업데이트되는 시점에 동작을 제어할 수 있음. (count가 5를 넘었을 경우 이를 감지하여 1로 초기화하는 콜백 함수)
+
+     ```react
+     useEffect(() => {
+             if (count > 5) {
+                 alert("count가 5를 넘었습니다. 1로 초기화합니다.")
+                 setCount(1)
+             }
+         }, [count])
+     ```
+
+   - 단락회로 평가를 이용하면 컴포넌트의 렌더링을 제어할 수 있다.
+
+     ```react
+     {isVisible && <UnmountTest/>}
+     ```
+
+     `isVisible`이 true이면 `UnmountTest`를 렌더링하고, false이면 렌더링하지않음.
+
+     
+
+3. Unmount되는 시점 제어하기 : Mount되는 시점에 실행되는 콜백함수에 Unmount 시점에 실행되게 할 콜백함수를 전달
 
    ```react
+   const UnmountTest = () => {
+   
+       useEffect(() => {
+           console.log("Mount!")
+           return () => {
+               // Unmount 시점에 실행될 콜백함수
+               console.log("Unmount!")
+           }
+       }, [])
    ```
 
-    
 
+
+=> `useEffect()`를 이용하면 , Mount/Update/Unmount 되는 시점 제어와 특정 값의 변화를 추적할 수 있다.
