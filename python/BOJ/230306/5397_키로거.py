@@ -3,27 +3,39 @@
 2. '>'가 들어오면 오른쪽 스택의 마지막 값을 왼쪽 스택에 붙이고
 3. '<'가 들어오면 왼쪽 스택의 마지막 값을 오른쪽 스택에 붙이고(커서가 이동하므로)
 4. '-'가 들어오면 왼쪽 스택의 마지막 값을 지운다.
+5. 각 방향의 스택 마지막 값을 서로의 스택에 붙이려면 각 스택이 존재해야 한다.
+6. 화면상 커서와 오른쪽 스택에 담긴 값은 다르다. 오른쪽은 왼쪽 스택의 마지막 값을 오른쪽 스택의 마지막 값으로 추가한다.
+(화면 상에서는 커서의 맨 오른쪽으로 이동하는 것처럼 보임) => reverse해줘야 하는 이유
 """
-
 
 T = int(input())
 
 for _ in range(T):
+    # 커서를 기준으로 왼쪽/오른쪽 스택
     left = []
     right = []
+    
+    # 비밀번호
     pwd = input()
-
-    for x in pwd:
-        if x == ">":
-            if right:
-                left.append(right.pop()) 
-        elif x=="<":
+    
+    for char in pwd:
+        # '<'이 나오면 왼쪽 스택의 값을 오른쪽 스택으로 붙인다.
+        if char == '<':
             if left:
                 right.append(left.pop())
-        elif x=="-":
+        
+        # '>'이 나오면 오른쪽 스택의 값을 왼쪽 스택으로 붙인다.
+        elif char == '>':
+            if right:
+                left.append(right.pop())
+        
+        # '-'이 나오면 왼쪽 스택의 마지막 값을 제거한다.
+        elif char == '-':
             if left:
                 left.pop()
+            
+        # '<', '>', '-'이 아니면 문자열이므로 왼쪽 스택에 붙인다.
         else:
-            left.append(x)
-
-print("".join(left)+"".join(reversed(right)))
+            left.append(char)
+            
+    print("".join(left) + "".join(reversed(right)))
