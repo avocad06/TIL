@@ -50,3 +50,32 @@
   ```
 
   *에서 선언한 객체 리터럴 `existingObejct` 값을 **에서 할당하면, 타입 오류가 발생하지 않는다. 즉, 초과 속성 검사는 객체 타입으로 선언된 위치에서 생성되는 객체 리터럴에 대해서만 일어나고, 이미 존재하는 기존 객체 리터럴 값을 제공하면 오류가 발생하지 않는다.
+  
+- 변수에 여러 객체 타입 중 하나가 될 수 있는 초깃값이 주어지면 타입스크립트는 해당 타입을 객체 타입 유니언으로 유추한다. 객체 타입의 조합을 명시하는 방법은 다음과 같다.
+
+  ```typescript
+  type PoemWithPges = {
+      name: string;
+      pages: number;
+  }
+  
+  type PoemWithRhymes = {
+      name: string;
+      rhymes: boolean;
+  }
+  
+  type Poem = PoemWithPages | PoemWithRhymes;
+  
+  const poem: Poem = Math.random() > 0.5 ?
+        {
+            name: "The Double Image", pages: 7
+        }:{
+            name: "Her Kind", rhymes: true
+        };
+  
+  poem.name;
+  
+  poem.pages; // Error : Property 'pages' does not exist on type 'Poem'. Property 'pages' does not exist on type 'PoemWithRhymes'
+  ```
+
+  변수의 유니언 타입과 같이 객체 타입 유니언도 모든 타입에 존재하지 않는 속성에만 접근할 수 있도록 오류를 발생시킨다.
